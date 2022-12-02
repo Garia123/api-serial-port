@@ -37,17 +37,17 @@ const openSerialPort = port => {
 
 const listenSerialPortData = () => {
   serialPort.on("data", function(data) {
-    dataString = data.toString(); 
-    if (dataString == '@' || dataString == 'D') {
+    dataString = data.toString();
+    dataAscii = data.toString("ascii");
+    if (dataString == "@" || dataString == "D") {
       dataSerialPort = [];
       dataSerialPort.push(balanzaSW);
-    } else if (dataString == 'ã') {
+    } else if (dataAscii == 'c') {
       dataSerialPort = [];
       dataSerialPort.push(balanzaNormal);
     } else if (!isNaN(dataString)) {
       dataSerialPort.push(data.toString());
     }
-    console.log(data.toString());
   });
 };
 
