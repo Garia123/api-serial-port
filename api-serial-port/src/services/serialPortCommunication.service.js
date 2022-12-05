@@ -1,12 +1,11 @@
 var SerialPort = require("serialport");
-var dataReceive;
 var serialPort;
 var dataSerialPort = [];
-const balanzaNormal = "balanzaNormal";
-const balanzaSW = "balanzaSW";
+const balanzaNormal = "1";
+const balanzaSW = "2";
 
 const connectSerialPort = () => {
-  openSerialPort("COM8");
+  openSerialPort("COM11");
   /*SerialPort.list()
     .then(function(ports) {
       ports.forEach(function(port) {
@@ -29,6 +28,7 @@ const openSerialPort = port => {
   serialPort.on("open", function() {
     try {
       console.log("-- Connection opened --");
+      listenSerialPortData();
     } catch (err) {
       console.log(err);
     }
@@ -42,7 +42,7 @@ const listenSerialPortData = () => {
     if (dataString == "@" || dataString == "D") {
       dataSerialPort = [];
       dataSerialPort.push(balanzaSW);
-    } else if (dataAscii == 'c') {
+    } else if (dataAscii == "c") {
       dataSerialPort = [];
       dataSerialPort.push(balanzaNormal);
     } else if (!isNaN(dataString)) {
