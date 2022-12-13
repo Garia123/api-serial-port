@@ -5,6 +5,7 @@ const balanzaNormal = "1";
 const balanzaSW = "2";
 
 const connectSerialPort = () => {
+  
   SerialPort.list()
     .then(function(ports) {
       ports.forEach(function(port) {
