@@ -5,17 +5,15 @@ const balanzaNormal = "1";
 const balanzaSW = "2";
 
 const connectSerialPort = () => {
-  openSerialPort("COM11");
-  /*SerialPort.list()
+  SerialPort.list()
     .then(function(ports) {
       ports.forEach(function(port) {
-        //serialPorts.push(port.path)
         openSerialPort(port.path);
       });
     })
     .catch(error => {
       console.log(error);
-    });*/
+    });
 };
 
 const openSerialPort = port => {
